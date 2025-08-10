@@ -1,65 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevOps Life Cycle</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exam Type Study Tips</title>
+  <style>
     body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        background: linear-gradient(135deg, lightpink, lightblue, lightyellow);
-        margin: 0;
-        padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
     }
-    h1 {
-        margin-top: 20px;
-        color: #333;
+
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
-    .circle {
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        position: relative;
-        margin: 40px auto;
-        border: 5px dashed #555;
+
+    h1, h2, h3 {
+      text-align: center;
     }
-    .stage {
-        position: absolute;
-        width: 100px;
-        height: 100px;
-        background-color: #fff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        border: 3px solid #333;
-        box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border-radius: 5px;
     }
-    .stage:nth-child(1) { top: 0; left: 200px; background-color: #ffcccc; }
-    .stage:nth-child(2) { top: 60px; left: 350px; background-color: #ccffcc; }
-    .stage:nth-child(3) { top: 180px; left: 420px; background-color: #ccccff; }
-    .stage:nth-child(4) { top: 320px; left: 350px; background-color: #fff0b3; }
-    .stage:nth-child(5) { top: 400px; left: 200px; background-color: #ffd9b3; }
-    .stage:nth-child(6) { top: 320px; left: 50px; background-color: #b3e6ff; }
-    .stage:nth-child(7) { top: 180px; left: -20px; background-color: #ffb3ff; }
-    .stage:nth-child(8) { top: 60px; left: 50px; background-color: #d9ffb3; }
-</style>
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    blockquote {
+      background: #e6f7ff;
+      padding: 15px;
+      border-left: 5px solid #007acc;
+      border-radius: 5px;
+      font-style: italic;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
-<h1>DevOps Life Cycle</h1>
-<div class="circle">
-    <div class="stage">Plan</div>
-    <div class="stage">Code</div>
-    <div class="stage">Build</div>
-    <div class="stage">Test</div>
-    <div class="stage">Release</div>
-    <div class="stage">Deploy</div>
-    <div class="stage">Operate</div>
-    <div class="stage">Monitor</div>
-</div>
+  <div class="container">
+    <h1>🎓 Exam Preparation Tips</h1>
+    <p>Select your exam type to view personalized preparation tips.</p>
 
+    <select id="examSelect">
+      <option value="">-- Select Exam Type --</option>
+      <option value="board">📚 Board Exams</option>
+      <option value="competitive">🎯 Competitive Exams</option>
+      <option value="semester">📝 Semester Exams</option>
+      <option value="language">🌐 Language Tests</option>
+    </select>
+
+    <div id="tipsSection" class="hidden">
+      <h2>🧠 Study Tips</h2>
+      <ul id="tipsList"></ul>
+    </div>
+
+    <div id="quoteSection" class="hidden">
+      <h3>💬 Motivational Quote</h3>
+      <blockquote id="quoteText"></blockquote>
+    </div>
+  </div>
+
+  <script>
+    const examTips = {
+      board: {
+        tips: [
+          "Revise each subject daily using a timetable.",
+          "Solve at least 5 years of past question papers.",
+          "Focus on NCERT or board-prescribed textbooks.",
+          "Practice writing answers to improve speed and presentation.",
+          "Use flashcards for quick revision before exams."
+        ],
+        quote: "Don’t stress. Do your best. Forget the rest."
+      },
+      competitive: {
+        tips: [
+          "Understand the syllabus and question pattern thoroughly.",
+          "Practice full-length mock tests under timed conditions.",
+          "Revise formulas and shortcuts daily.",
+          "Focus on accuracy as well as speed.",
+          "Analyze mock test mistakes and work on weak areas."
+        ],
+        quote: "Success is where preparation and opportunity meet."
+      },
+      semester: {
+        tips: [
+          "Revise lecture notes and focus on class assignments.",
+          "Cover high-weightage topics first.",
+          "Form study groups for tough subjects.",
+          "Use mind maps to organize theory-heavy content.",
+          "Don’t cram — understand the logic behind concepts."
+        ],
+        quote: "The secret of getting ahead is getting started."
+      },
+      language: {
+        tips: [
+          "Read, write, speak, and listen to the language daily.",
+          "Watch videos or listen to podcasts in the target language.",
+          "Use flashcards for vocabulary and grammar.",
+          "Practice writing short essays and letters.",
+          "Take regular listening and reading comprehension tests."
+        ],
+        quote: "Practice makes progress—fluency follows persistence."
+      }
+    };
+
+    const examSelect = document.getElementById('examSelect');
+    const tipsSection = document.getElementById('tipsSection');
+    const tipsList = document.getElementById('tipsList');
+    const quoteSection = document.getElementById('quoteSection');
+    const quoteText = document.getElementById('quoteText');
+
+    examSelect.addEventListener('change', function () {
+      const selected = this.value;
+
+      if (examTips[selected]) {
+        const data = examTips[selected];
+
+        tipsSection.classList.remove('hidden');
+        quoteSection.classList.remove('hidden');
+
+        tipsList.innerHTML = "";
+        data.tips.forEach(tip => {
+          const li = document.createElement('li');
+          li.textContent = tip;
+          tipsList.appendChild(li);
+        });
+
+        quoteText.textContent = data.quote;
+      } else {
+        tipsSection.classList.add('hidden');
+        quoteSection.classList.add('hidden');
+      }
+    });
+  </script>
 </body>
 </html>
