@@ -1,0 +1,14 @@
+name: Poster Upload Workflow
+
+on:
+  push:
+
+jobs:
+  upload-poster:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Display Upload Message
+        run: echo "Poster Uploaded Successfully"
